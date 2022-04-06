@@ -25,7 +25,7 @@ function App() {
     }
   }, [result]);
 
-  const chooseSquare = (square) => {
+  const rendSquare = (square) => {
     setBoard(
       board.map((val, index) => {
         if (index == square && val == "") { //only allow to change square that are empty
@@ -38,9 +38,9 @@ function App() {
   };
 
 
-  const Square = ({ val, chooseSquare }) => {
+  const Square = ({ val, rendSquare }) => {
     return (
-      <div className="square" onClick={chooseSquare}>
+      <div className="square" onClick={rendSquare}>
         {val}
       </div>
     );
@@ -63,10 +63,10 @@ function App() {
 
     Patterns.forEach((currPattern) => {
       const firstPlayer = board[currPattern[0]];
-      if (firstPlayer == "") 
-      return;
-      let WinningPattern = true; 
-      
+      if (firstPlayer == "")
+        return;
+      let WinningPattern = true;
+
       currPattern.forEach((index) => {
         if (board[index] != firstPlayer) {
           WinningPattern = false;
@@ -79,7 +79,7 @@ function App() {
     });
   };
 
-  
+
 
   const checkIfTie = () => {
     let filled = true;
@@ -100,7 +100,8 @@ function App() {
     setPlayer("O");
   };
 
-return (
+
+  return (
     <div className="App">
       <div className="board">
         <div className="row">
